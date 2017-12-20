@@ -1,0 +1,30 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <checkbox v-model="foo" value="abc"></checkbox>
+</div>
+
+<script>
+    const Checkbox = {
+        model: {
+            prop: 'checked',
+            event: 'change'
+        },
+        props: {
+            checked: Boolean,
+            value: String
+        },
+        template: `<input type="checkbox" @onChange="event"> {{value}}</input>`
+    }
+    const vm = new Vue({
+        el: '#app',
+        components: {
+            "Checkbox": Checkbox
+        },
+        data: {
+            foo: {
+                abc: 1
+            }
+        }
+    })
+</script>

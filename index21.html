@@ -1,0 +1,51 @@
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue-router"></script>
+<script src="https://unpkg.com/vuex"></script>
+
+<div id="app">
+
+</div>
+
+<script>
+    const NotFound = {
+        template: '<p>Page not found</p>'
+    }
+    const Home = {
+        template: '<p>Home page </p>'
+    }
+    const About = {
+        template: '<p>about page</p>'
+    }
+
+    const routes = {
+        '/': Home,
+        "/about": About
+    }
+    new Vue({
+        el: '#app',
+        data: {
+            currentRoute: window.location.pathname
+        },
+        computed: {
+            ViewComponent() {
+                console.log(this.currentRoute)
+                return routes[this.currentRoute] || NotFound
+            }
+        },
+        render(h) {
+            return h(this.ViewComponent)
+        }
+    })
+
+    const store = new Vuex.Store({
+        // ...
+        state: {
+            count: 0
+        },
+        mutations: {
+            increment(state) {
+                state.count++
+            }
+        }
+    })
+</script>

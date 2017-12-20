@@ -1,0 +1,41 @@
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue-router"></script>
+<script src="https://unpkg.com/vuex"></script>
+
+<div id="app">
+
+</div>
+
+<script>
+    const store = new Vuex.Store({
+        // ...
+        state: {
+            count: 0
+        },
+        mutations: {
+            inc(state) {
+                state.count++
+            }
+        }
+    })
+    const Counter = {
+        template: '<div>{{count}}</div>',
+        computed: {
+            count() {
+                return store.state.count
+            }
+        }
+    }
+    const app = new Vue({
+        el: '#app',
+        store,
+        components: {
+            Counter
+        },
+        template: `
+      <div class="app">
+        <counter/>
+      </div>
+      `
+    })
+</script>
