@@ -1,0 +1,15 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="example">
+    <button @click="counter+=1">Add 1</button>
+    <p>The button above has been clicked {{counter}} times.</p>
+</div>
+
+<script>
+    const vm = new Vue({
+        el: '#example',
+        data: {
+            counter: 0
+        }
+    })
+</script>

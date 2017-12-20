@@ -1,0 +1,37 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="ele">
+    <my-component></my-component>
+    <my-comp2></my-comp2>
+    <Counter></Counter>
+    <Counter></Counter>
+    <Counter></Counter>
+</div>
+
+<script>
+    const data = {
+        counter: 0
+    }
+    const Counter = {
+        template: `<button @click="counter += 1" >{{counter}} </button>"`,
+        data: function() {
+            return {
+                counter: 0
+            }
+        }
+    }
+    const Child = {
+        template: `<div>Child</div>`
+    }
+    Vue.component('my-component', {
+        template: `<div>abc</div>`
+    })
+
+    const vm = new Vue({
+        el: '#ele',
+        components: {
+            'my-comp2': Child,
+            'Counter': Counter
+        }
+    })
+</script>

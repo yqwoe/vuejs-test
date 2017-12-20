@@ -1,0 +1,43 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="example">
+    <input v-model="message" placeholder="edit me" />
+    <p>Message is : {{message}}</p>
+
+    <span>Multiline message is :</span>
+    <p style="white-space: pre-line;">{{message}}</p>
+    <br/>
+    <textarea v-model="message" placeholder="Add multiple lines"></textarea>
+    <br/>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{checked}}</label>
+    <br/>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+    <br>
+    <select v-model="selected">
+    <option disabled value="">请选择</option>
+    <option key="1" value="1">A</option>
+    <option key="2" value="2">B</option>
+    <option key="3" value="3">C</option>
+  </select>
+    <span>Selected: {{ selected }}</span>
+</div>
+
+<script>
+    const vm = new Vue({
+        el: '#example',
+        data: {
+            message: "",
+            checked: false,
+            checkedNames: [],
+            selected: ''
+        }
+    })
+</script>

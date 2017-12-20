@@ -1,0 +1,22 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="test" v-bind:class="classObject">
+    abc
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#test',
+        data: {
+            isActive: true,
+            error: null
+        },
+        computed: {
+            classObject: function() {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal'
+                }
+            }
+        }
+    })
+</script>

@@ -1,0 +1,29 @@
+<script src="https://unpkg.com/vue"></script>
+
+
+<div id="currency">
+    <Currency v-model="price"></Currency>
+</div>
+
+<script>
+    const Currency = {
+        template: `<span> $ <input ref="input" v-bind:value="value" v-on:input="updateValue($event.target.value)" > </span>`,
+        props: ['value'],
+        methods: {
+            updateValue: function(value) {
+                var formatteValue = value.trim().slice(0, value.indexOf('.') === -1 ? value.length : value.indexOf(".") + 3)
+                if (formatteValue !== value) this.$refs.input.value = formatteValue
+                this.$emit('input', Number(formatteValue))
+            }
+        }
+    }
+    const vm = new Vue({
+        el: 'currency',
+        components: {
+            "Currency": Currency
+        },
+        data: {
+            price: null
+        }
+    })
+</script>

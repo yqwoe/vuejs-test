@@ -1,0 +1,24 @@
+<script src="https://unpkg.com/vue"></script>
+
+
+<div id="ele">
+    <Example message=""></Example>
+</div>
+
+<script>
+    const Example = {
+        props: {
+            message: {
+                type: Number,
+                required: true
+            }
+        },
+        template: `<div>{{message}}</div>`
+    }
+    const vm = new Vue({
+        el: '#ele',
+        components: {
+            'Example': Example
+        }
+    })
+</script>

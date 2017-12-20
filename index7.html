@@ -1,0 +1,30 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="test">
+    <my-componet class="baz boo" v-bind:style="{ color: activeColor , fontSize: fontSize + 'px'}">abc</my-componet>
+    <my-componet v-bind:style="styleObject">abc</my-componet>
+    <my-componet v-bind:style="[baseStyles,overridingStyles]">abc</my-componet>
+</div>
+
+<script>
+    Vue.component('my-component', {
+        template: '<p class="foo bar">Hi</p>'
+    })
+    let vm = new Vue({
+        el: '#test',
+        data: {
+            activeColor: 'red',
+            fontSize: 30,
+            styleObject: {
+                color: 'green',
+                fontSize: 50
+            },
+            baseStyles: {
+                "background-color": 'red',
+            },
+            overridingStyles: {
+                fontSize: 50
+            }
+        }
+    })
+</script>
